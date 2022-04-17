@@ -6,7 +6,7 @@ const size = {
     laptop: '1024px',
     laptopL: '1440px',
     desktop: '2560px'
-  }
+}
 
 export const device = {
     mobileS: `(min-width: ${size.mobileS})`,
@@ -26,7 +26,15 @@ const colors = {
     gray: "#EEEEEE"
 }
 
+const typeColors = {
+    software: '#9da200',
+    security: '#5858FA',
+    management: '#184220',
+    media: ''
+}
+
 const theme = {
+    typeColors,
     colors,
     device
 }
