@@ -12,7 +12,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
     max-width: 1300px;
     width: 100%;
-    padding: 20px;
+    padding: 1rem;
     margin: 0 auto;
 `
 

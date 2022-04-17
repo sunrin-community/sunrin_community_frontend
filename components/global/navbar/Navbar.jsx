@@ -17,16 +17,16 @@ const NavWrapper = styled.div`
 const NavTop = styled.div`
     display: flex;
     width: 100%;
-    height: 100px;
+    height: 6rem;
     max-width: 1300px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 0 .8rem;
     align-items: center;
     justify-content: space-between;
 `
 const NavLinks = styled.nav`
     display: flex;
-    height: 60px;
+    height: 4rem;
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 10px;
@@ -60,7 +60,7 @@ const NavLink = styled.a`
     display: flex;
     align-items: center;
     height:  100%;
-    padding: 0 20px;
+    padding: 0 1rem;
     cursor: pointer;
     &:hover {
         border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
