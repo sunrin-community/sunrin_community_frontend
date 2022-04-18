@@ -6,13 +6,13 @@ import { RiDiscussLine } from 'react-icons/ri'
 const Container = styled.div`
     display: flex;
     width: 100%;
-    padding: 1.5rem 1rem;
+    padding: 1rem 1.5rem;
     background-color: #fff;
     border: 1px solid ${({ theme }) => theme.colors.gray};
     border-radius: .5rem;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     transition: .5s transform;
-    gap: 1rem;
+    gap: 1.5rem;
     &:hover {
         box-shadow: rgba(99, 99, 99, 0.22) 0px 3px 8px;
         transform: translateY(-2px);
@@ -28,6 +28,7 @@ const Title = styled.a`
     font-size: 1.5rem;
     font-weight: 500;
     white-space: wrap;
+    cursor: pointer;
     &:hover {
         transition: .3s color;
         color: ${({ theme }) => theme.colors.primary};
@@ -35,17 +36,17 @@ const Title = styled.a`
     }
 `
 const Desc = styled.p`
-    font-size: .875rem;
     color: gray;
     font-weight: 300;
     height: auto;
     max-height: 6rem;
+    text-overflow: ellipsis;
     overflow: hidden;
 `
 const AuthorWithStates = styled.div`
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 `
 const Author = styled.div`
     display: flex;

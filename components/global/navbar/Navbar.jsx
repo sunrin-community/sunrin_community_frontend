@@ -9,7 +9,7 @@ const NavContainer = styled.header`
     top: 0;
     width: 100%;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     border-top: 5px solid ${({ theme }) => theme.colors.primary};
     z-index: 100;
 `
@@ -32,7 +32,6 @@ const NavLinks = styled.nav`
     height: 4rem;
     max-width: 1300px;
     margin: 0 auto;
-    padding: 0 1rem;
 `
 const Logo = styled.h1`
     font-size: 1.5rem;
@@ -53,6 +52,7 @@ const NavItem = styled.li`
 `
 const NavLink = styled.a`
     display: flex;
+    font-size: 1.125rem;
     align-items: center;
     height:  100%;
     padding: 0 1rem;
@@ -88,7 +88,7 @@ const ProfileImage = styled.img`
     border-radius: 50%;
 `
 const ProfileName = styled.span`
-    font-size: .875rem;
+    font-size: 1rem;
 `
 const ProfileArrow = styled(IoIosArrowDown)`
     transform: ${({ isShown }) => isShown ? 'rotate(180deg) translateY(-10%)' : 'none'};
@@ -100,7 +100,6 @@ const DropDownMenu = styled.div`
     position: absolute;
     width: 14rem;
     right: 0;
-    font-size: .875rem;
     background-color: white;
     border-radius: .5rem;
     border: 1px solid ${({ theme }) => theme.colors.gray};
@@ -148,7 +147,7 @@ const DropDownLink = styled.a`
 `
 const UserName = styled.span``
 const DetailText = styled.span`
-    font-size: .75rem;
+    font-size: .875rem;
 `
 const ButtonWrapper = styled.div`
     display: flex;

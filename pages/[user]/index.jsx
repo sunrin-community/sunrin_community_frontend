@@ -40,12 +40,10 @@ const BlockPostContainer = styled.div`
         grid-template-columns: repeat(4, 1fr);
     }
 `
-const SectionTitle = styled.h2`
-    text-align: center;
-`
 const ProfileTop = styled.div`
     display: flex;
-    justify-content: space-between;
+    gap: 2rem;
+    flex-direction: column;
 `
 const ProfileLeft = styled.div`
     display: flex;
@@ -67,6 +65,7 @@ const Name = styled.span`
     font-weight: bold;
 `
 const Description = styled.p`
+    font-size: 1.25rem;
 `
 const ProfileMenu = styled.ul`
     display: flex;
@@ -123,13 +122,13 @@ const MyPage = () => {
                     </ProfileLeft>
                     <ProfileMenu>
                         <ProfileList>
-                            <IoLogoGithub size={24} />
+                            <IoLogoGithub size={24} color="gray" />
                             <Link href="https://github.com/dhwldwld">
                                 <a><ProfileItem>https://github.com/dhwldwld</ProfileItem></a>
                             </Link>
                         </ProfileList>
                         <ProfileList>
-                            <IoMail size={24} />
+                            <IoMail size={24} color="gray" />
                             <ProfileItem>email@email.com</ProfileItem>
                         </ProfileList>
                     </ProfileMenu>

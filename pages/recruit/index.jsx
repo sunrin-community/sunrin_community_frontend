@@ -36,7 +36,7 @@ const Select = styled.select`
     outline: none;
     border: 1px solid ${({theme}) => theme.colors.gray};
     border-radius: .5rem;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
 `
 const Option = styled.option``
 
