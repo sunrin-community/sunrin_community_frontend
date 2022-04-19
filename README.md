@@ -6,15 +6,18 @@
 
 개발 인원: 1명
 
-개발 분야: 백엔드, 프론트 엔드 (Node.js, React.js/Next.js)
+개발 분야: 백엔드, 프론트 엔드
+
+백엔드: express, typescript
+
+프론트: next.js, redux, styled-components
 
 GITHUB: [https://github.com/sunrin-community](https://github.com/sunrin-community)
 
 프로젝트 주소:
 
 ## 기능 명세
-
-- ...
+- 회원가입/로그인
 
 ## 제공 서비스
 
