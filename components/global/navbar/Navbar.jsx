@@ -58,9 +58,11 @@ const NavLink = styled.a`
     padding: 0 1rem;
     cursor: pointer;
     &:hover {
+        color: ${({theme}) => theme.colors.primary};
         border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
     }
     &.active {
+        color: ${({theme}) => theme.colors.primary};
         border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
     }
 `
@@ -173,7 +175,7 @@ const Navbar = () => {
     const router = useRouter();
     const [isShown, setIsShown] = useState(false)
     const isAdmin = false;
-    const user = true;
+    const user = false;
     const username = "dhwldwld";
     const pathName = router.pathname;
 

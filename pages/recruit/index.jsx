@@ -36,7 +36,7 @@ const Select = styled.select`
     outline: none;
     border: 1px solid ${({theme}) => theme.colors.gray};
     border-radius: .5rem;
-
+    font-size: 1rem;
 `
 const Option = styled.option``
 
