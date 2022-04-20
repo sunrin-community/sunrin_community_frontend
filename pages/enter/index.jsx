@@ -79,16 +79,16 @@ const Enter = () => {
                         <InputIcon>
                             <AiOutlineUser size={20} />
                         </InputIcon>
-                        <FormInput type="email" placeholder="이메일 입력" required />
+                        <FormInput type="email" name="email" placeholder="이메일 입력" required />
                     </FormGroup>
                     <FormGroup>
                         <InputIcon>
                             <VscLock size={20} />
                         </InputIcon>
-                        <FormInput type="password" placeholder="비밀번호 입력" required />
+                        <FormInput type="password" name="password" placeholder="비밀번호 입력" required />
                     </FormGroup>
                     <FormCheckBoxWrapper>
-                        <FormCheckBox type="checkbox" id="remember-me" />
+                        <FormCheckBox type="checkbox" id="remember-me" name="remember" />
                         <FormCheckBoxLabel htmlFor="remember-me" >
                             30일 동안 기억하기
                         </FormCheckBoxLabel>
