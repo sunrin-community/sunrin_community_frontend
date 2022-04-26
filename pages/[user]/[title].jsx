@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router'
+
+// components
 import Layout from '../../components/Layout/Layout';
 
 const PostPage = () => {

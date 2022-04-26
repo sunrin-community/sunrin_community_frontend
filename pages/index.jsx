@@ -17,6 +17,7 @@ const PostList = styled.div`
 `
 
 export default function Home() {
+
 	const post = {
 		thumbnail: '/images/thumbnail.jpg'
 	}

@@ -1,7 +1,8 @@
-import Layout from '../../components/Layout/Layout'
+// components
 import styled from 'styled-components'
 
 // components
+import Layout from '../../components/Layout/Layout'
 import BlockPostBox from '../../components/post/BlockPostBox'
 
 const BlockPostContainer = styled.div`

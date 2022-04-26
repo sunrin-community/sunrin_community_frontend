@@ -1,6 +1,10 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+
+// styled-components
 import styled from 'styled-components'
+
+// react iocns
 import { IoLogoGithub, IoMail } from 'react-icons/io5'
 
 // components
@@ -104,7 +108,6 @@ const TypeSelect = styled.a`
 const MyPage = () => {
     const router = useRouter();
     const { user, type } = router.query;
-    console.log(type)
     return (
         <Layout title={`${user}님의 페이지`}>
             <Section>

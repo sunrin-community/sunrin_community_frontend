@@ -101,7 +101,10 @@ const StateName = styled.span`
         display: inline;
     }
 `
-const ThumbnailWrapper = styled.div``
+const ThumbnailWrapper = styled.div`
+    display: flex;
+    align-items: center;
+`
 const ThumbNailImg = styled.img`
     width: 300px;
     border-radius: .5rem;

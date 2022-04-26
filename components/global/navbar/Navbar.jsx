@@ -2,6 +2,12 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+
+// redux
+import { useDispatch, useSelector } from 'react-redux'
+import { SignOutAuthAction } from '../../../redux/actions/AuthAction'
+
+// react-icons
 import { IoIosArrowDown } from 'react-icons/io'
 
 const NavContainer = styled.header`
@@ -58,11 +64,11 @@ const NavLink = styled.a`
     padding: 0 1rem;
     cursor: pointer;
     &:hover {
-        color: ${({theme}) => theme.colors.primary};
+        color: ${({ theme }) => theme.colors.primary};
         border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
     }
     &.active {
-        color: ${({theme}) => theme.colors.primary};
+        color: ${({ theme }) => theme.colors.primary};
         border-bottom: 2px solid ${({ theme }) => theme.colors.primary};
     }
 `
@@ -82,6 +88,7 @@ const NavProfileButton = styled.button`
     gap: .5rem;
     align-items: center;
     padding: .5rem;
+    white-space: nowrap;
     cursor: pointer;
 `
 const ProfileImage = styled.img`
@@ -104,8 +111,8 @@ const DropDownMenu = styled.div`
     right: 0;
     background-color: white;
     border-radius: .5rem;
+    padding: .5rem 0;
     border: 1px solid ${({ theme }) => theme.colors.gray};
-    margin-top: .5rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     animation: rotateMenu 400ms ease-in-out forwards;
     transform-origin: top center;
@@ -126,12 +133,11 @@ const DropDownProfileLink = styled.a`
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
-    border-top-left-radius: .5rem;
-    border-top-right-radius: .5rem;
     cursor: pointer;
     &:hover {
         color: ${({ theme }) => theme.colors.primary};
         background-color: ${({ theme }) => theme.colors.gray};
+        text-decoration: underline;
     }
 `
 const DropDownItem = styled.div`
@@ -144,7 +150,7 @@ const DropDownLink = styled.a`
     &:hover {
         color: ${({ theme }) => theme.colors.primary};
         background-color: ${({ theme }) => theme.colors.gray};
-        border-radius: .5rem;
+        text-decoration: underline;
     }
 `
 const UserName = styled.span``
@@ -172,16 +178,20 @@ const Button = styled.a`
 `
 
 const Navbar = () => {
-    const router = useRouter();
+    const router = useRouter()
+    const dispatch = useDispatch()
+    const { isLoggedIn, user } = useSelector((state) => state.auth)
     const [isShown, setIsShown] = useState(false)
-    const isAdmin = false;
-    const user = false;
-    const username = "dhwldwld";
-    const pathName = router.pathname;
+    const isAdmin = user.role === 'admin' ? true : false
+    const pathName = router.pathname
 
     const handleDropDown = () => {
-        setIsShown(!isShown);
-    };
+        setIsShown(!isShown)
+    }
+
+    const logout = () => {
+        dispatch(SignOutAuthAction())
+    }
 
     return (
         <NavContainer>
@@ -192,22 +202,22 @@ const Navbar = () => {
                             <a>SUNRIN_COMMUNITY</a>
                         </Link>
                     </Logo>
-                    {user ? (
+                    {isLoggedIn ? (
                         <NavRight>
                             <Link href="/write">
                                 <Button bgcolor={true}>게시물 작성</Button>
                             </Link>
                             <NavProfileDropDown>
                                 <NavProfileButton onClick={handleDropDown}>
-                                    <ProfileImage src="/images/blank_profile.png" alt='profile' />
-                                    <ProfileName>{username}</ProfileName>
+                                    <ProfileImage src={user.avatar} alt='profile' />
+                                    <ProfileName>{user.name}</ProfileName>
                                     <ProfileArrow $isShown={isShown} />
                                 </NavProfileButton>
                                 {isShown && (
                                     <DropDownMenu onClick={handleDropDown}>
-                                        <Link href={`/${username}`}>
+                                        <Link href={`/${user.username}`}>
                                             <DropDownProfileLink>
-                                                <UserName>@{username}</UserName>
+                                                <UserName>@{user.username}</UserName>
                                                 <DetailText>프로필 보기</DetailText>
                                             </DropDownProfileLink>
                                         </Link>
@@ -218,7 +228,7 @@ const Navbar = () => {
                                                 </DropDownLink>
                                             </Link>
                                             <Link href='/'>
-                                                <DropDownLink>
+                                                <DropDownLink onClick={logout}>
                                                     로그아웃
                                                 </DropDownLink>
                                             </Link>
