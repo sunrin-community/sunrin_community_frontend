@@ -18,6 +18,12 @@ GITHUB: [https://github.com/sunrin-community](https://github.com/sunrin-communit
 
 ## 기능 명세
 - 회원가입/로그인
+- Markdown 형식의 게시글 작성
+- 게시글
+- 관리자
+    - 회원가입 승인
+    - 사용자 조회 및 관리
+    - 게시글 조회 및 관리
 
 ## 제공 서비스
 
@@ -25,6 +31,6 @@ GITHUB: [https://github.com/sunrin-community](https://github.com/sunrin-communit
 
 대회 및 프로젝트 모집
 
-고객센터 페이지
+마이페이지
 
-**어드민 조회 페이지 (사용자 조회, 게시글 관리, 모집글 관리)**
+어드민 조회 페이지 (사용자 관리, 게시글 관리)
