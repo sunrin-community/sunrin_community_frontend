@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -42,9 +42,9 @@ const NavLinks = styled.nav`
 const Logo = styled.h1`
     font-size: 1.5rem;
     color: ${({ theme }) => theme.colors.lightPrimary};
+    transition: .3s;
     cursor: default;
     &:hover {
-        transition: .3s;
         color: ${({ theme }) => theme.colors.primary};
     }
 `
@@ -179,15 +179,31 @@ const Button = styled.a`
 
 const Navbar = () => {
     const router = useRouter()
+    const ref = useRef(null)
     const dispatch = useDispatch()
     const { isLoggedIn, user } = useSelector((state) => state.auth)
     const [isShown, setIsShown] = useState(false)
     const isAdmin = user.role === 'admin' ? true : false
     const pathName = router.pathname
 
+    useEffect(() => {
+        document.addEventListener('mousedown', onOutsideClick);
+
+        return () => {
+            document.removeEventListener('mousedown', onOutsideClick);
+        };
+    });
+    
     const handleDropDown = () => {
         setIsShown(!isShown)
     }
+
+    const onOutsideClick = useCallback((e) => {
+        if (!ref.current) return;
+        if (ref.current.contains(e.target)) return;
+        setIsShown(false)
+    }, [setIsShown]);
+
 
     const logout = () => {
         dispatch(SignOutAuthAction())
@@ -208,7 +224,7 @@ const Navbar = () => {
                                 <Button bgcolor={true}>게시물 작성</Button>
                             </Link>
                             <NavProfileDropDown>
-                                <NavProfileButton onClick={handleDropDown}>
+                                <NavProfileButton onClick={handleDropDown} ref={ref}>
                                     <ProfileImage src={user.avatar} alt='profile' />
                                     <ProfileName>{user.name}</ProfileName>
                                     <ProfileArrow $isShown={isShown} />
