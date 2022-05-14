@@ -23,6 +23,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: space-between;
     gap: 1rem;
+    flex-grow: 1;
 `
 const Title = styled.a`
     font-size: 1.5rem;
@@ -107,24 +108,23 @@ const ThumbnailWrapper = styled.div`
 `
 const ThumbNailImg = styled.img`
     width: 300px;
+    max-height: 150px;
     border-radius: .5rem;
+    object-fit: cover;
 `
 
-const PostBox = ({ author, post={} }) => {
+const PostBox = ({ post }) => {
     const username = "dhwldwld";
-    const date = new Date(2022, 4, 17);
     const reaction = 20;
     const comment = 20;
     return (
         <Container>
             <Wrapper>
-                <Link href={`/${username}/title--21an`}>
-                    <Title>title</Title>
+                <Link href={`/${username}/${post.slug}`}>
+                    <Title>{post.title}</Title>
                 </Link>
                 <Desc>
-                    Introduction If you are a developer you probably know what an SSL certificate is.
-                    If you don't know what it is, don't worry.
-                    An SSL certificate is a must-have on any website. it lets your wasfdas
+                    {post.description}
                 </Desc>
                 <AuthorWithStates>
                     <Author>
@@ -133,7 +133,7 @@ const PostBox = ({ author, post={} }) => {
                             <Link href={`/${username}`}>
                                 <NameAuthor>{username}</NameAuthor>
                             </Link>
-                            <UploadTime>{date.toLocaleDateString()}</UploadTime>
+                            <UploadTime>{post.date ? post.date : "" }</UploadTime> {/* date.toLocaleDateString() */}
                         </InfoAuthor>
                     </Author>
                     <States>

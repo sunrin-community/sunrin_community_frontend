@@ -8,7 +8,6 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        background-color: #ffffff;
         font-family: "Noto Sans KR",sans-serif;
     }
     

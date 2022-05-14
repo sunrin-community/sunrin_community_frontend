@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import matter from 'gray-matter'
 
 // components
 import Layout from '../components/Layout/Layout'
@@ -16,21 +17,40 @@ const PostList = styled.div`
   }
 `
 
-export default function Home() {
+export default function Home({ data }) {
+	const listItems = data.map(blog => matter(blog).data)
 
-	const post = {
-		thumbnail: '/images/thumbnail.jpg'
-	}
-	const notThumbnail = {
-		thumbnail: ''
-	}
 	return (
 		<Layout>
 			<PostList>
-				<PostBox post={post} />
-				<PostBox post={notThumbnail} />
-				<PostBox />
+				{listItems.map((post, i) => (
+					<PostBox key={i} post={post} />
+				))}
 			</PostList>
 		</Layout>
 	)
+}
+
+export const getStaticProps = async () => {
+	const fs = require('fs')
+
+	const files = fs.readdirSync(`${process.cwd()}/content`, 'utf-8')
+
+	// markdown 파일인지 
+	const posts = files.filter(fn => fn.endsWith('.md'))
+
+	const data = posts.map(post => {
+		const path = `${process.cwd()}/content/${post}`
+		const rawContent = fs.readFileSync(path, {
+			encoding: 'utf-8'
+		})
+
+		return rawContent
+	})
+
+	return {
+		props: {
+			data
+		}
+	}
 }

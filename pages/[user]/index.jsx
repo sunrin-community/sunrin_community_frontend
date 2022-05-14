@@ -106,6 +106,7 @@ const TypeSelect = styled.a`
 `
 
 const MyPage = () => {
+    // 유저 있는지 확인 (생략)
     const router = useRouter();
     const { user, type } = router.query;
     return (
@@ -140,16 +141,14 @@ const MyPage = () => {
             <Section>
                 <TypeSelectWrapper>
                     <Link href={`/${user}`}>
-                        <TypeSelect className={type !== 'recruit' ? 'active' : ''}>글</TypeSelect>
+                        <TypeSelect className={type !== 'recruit' ? 'active' : ''}>게시글</TypeSelect>
                     </Link>
                     <Link href={`/${user}?type=recruit`}>
-                        <TypeSelect className={type === 'recruit' ? 'active' : ''}>대회/프로젝트</TypeSelect>
+                        <TypeSelect className={type === 'recruit' ? 'active' : ''}>모집</TypeSelect>
                     </Link>
                 </TypeSelectWrapper>
                 {type !== 'recruit' ? (
                     <PostContainer>
-                        <PostBox />
-                        <PostBox />
                     </PostContainer>
                 ) : (
                     <BlockPostContainer>
