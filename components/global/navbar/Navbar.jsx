@@ -230,7 +230,7 @@ const Navbar = () => {
                                     <ProfileArrow $isShown={isShown} />
                                 </NavProfileButton>
                                 {isShown && (
-                                    <DropDownMenu onClick={handleDropDown}>
+                                    <DropDownMenu onClick={handleDropDown} ref={ref}>
                                         <Link href={`/${user.username}`}>
                                             <DropDownProfileLink>
                                                 <UserName>@{user.username}</UserName>
