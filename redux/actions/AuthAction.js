@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 export const SignUpAuthAction = (userData) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.post('/signup', userData)
+            const { data } = await axios.post('/auth/signup', userData)
 
             dispatch({ type: actionTypes.SIGNUP_SUCCESS, payload: data })
 
@@ -24,7 +24,7 @@ export const SignUpAuthAction = (userData) => {
 export const SignInAuthAction = (userData) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.post('/signin', userData, { withCredentials: true })
+            const { data } = await axios.post('/auth/signin', userData, { withCredentials: true })
 
             localStorage.setItem('token', JSON.stringify(data.token))
 
@@ -47,7 +47,7 @@ export const SignInAuthAction = (userData) => {
 export const SignOutAuthAction = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get('/signout', { withCredentials: true })
+            const { data } = await axios.get('/auth/signout', { withCredentials: true })
 
             localStorage.removeItem('token')
 
@@ -64,7 +64,7 @@ export const SignOutAuthAction = () => {
 export const getUser = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get('/info')
+            const { data } = await axios.get('/auth/info')
 
             dispatch({ type: actionTypes.GET_USER_SUCCESS, payload: data })
         } catch (err) {
@@ -76,7 +76,7 @@ export const getUser = () => {
 export const getToken = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get('/token', { withCredentials: true })
+            const { data } = await axios.get('/auth/token', { withCredentials: true })
 
             localStorage.setItem('token', JSON.stringify(data.token))
 
